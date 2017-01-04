@@ -1,0 +1,15 @@
+require.config({
+	baseUrl:"/public",
+	paths:{
+		jquery:"assets/jquery/jquery.min",
+		bootstrap:"assets/bootstrap/js/bootstrap.min",
+		nprogress:"assets/nprogress/nprogress",
+		template:"assets/artTemplate/template-native",
+		cookie:"assets/jquery-cookie/jquery.cookie"
+	},
+	shim:{
+		bootstrap:{
+			deps:["jquery"]
+		}	
+	}
+})
