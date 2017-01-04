@@ -32,7 +32,7 @@
 			// console.log(1);
 			var pInfor=JSON.parse($.cookie("pInfor"));
 			// console.log(pInfor);
-			var html=template("asideTemp",{pInfor:pInfor});
+			var html=template("asideTemp",pInfor);
 			// console.log(html);
 			$(".aside .profile").html(html);		
 		}
