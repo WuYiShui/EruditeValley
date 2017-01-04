@@ -36,14 +36,29 @@
 			// console.log(html);
 			$(".aside .profile").html(html);		
 		}
-		//退出清除cookie
+		//退出清除cookie 调用接口让服务器删除cookie
+		//
 		$("#exit").on("click",function(){
-			alert(1);
+			confirm("你确定要退出登录?");
+			$.ajax({
+				type:"get",
+				url:"/api/logout",
+				dataType:"json",
+				success:function(deleIfor){
+					console.log(deleIfor);
+					if(deleIfor.code==200){
+					 	$.removeCookie("pInfor",{path:"/"});
+					 	$.removeCookie("PHPSESSID",{path:"/"}); 
+						location.href="/login";
+					}
+				}
+			})
 			// console.log(document.cookie);
 			// 直接删除cookie配上路径
 			// 推出登录也是需要调用接口的
-			$.removeCookie("pInfor",{path:"/"});
-			$.removeCookie("PHPSESSID",{path:"/"}); 
+			//已经上传的cookie都需要后台来做删除
+			// $.removeCookie("pInfor",{path:"/"});
+			// $.removeCookie("PHPSESSID",{path:"/"}); 
 		})
 
 	})
