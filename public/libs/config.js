@@ -3,6 +3,8 @@ require.config({
 	paths:{
 		jquery:"assets/jquery/jquery.min",
 		bootstrap:"assets/bootstrap/js/bootstrap.min",
+		datepicker:"assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
+		zhCN:"assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
 		nprogress:"assets/nprogress/nprogress",
 		template:"assets/artTemplate/template",
 		cookie:"assets/jquery-cookie/jquery.cookie"
@@ -10,6 +12,9 @@ require.config({
 	shim:{
 		bootstrap:{
 			deps:["jquery"]
-		}	
+		},
+		zhCN:{
+			deps:["jquery"]
+		}
 	}
 })

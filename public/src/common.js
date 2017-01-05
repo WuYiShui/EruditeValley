@@ -1,9 +1,11 @@
 	//require定义了一个模块 或则是依赖了注入的模块 引用时就必须加载模块
-	define(['jquery','template','cookie',],function(jquery,template){
-		// NProgress.start();
+	define(['jquery','template','cookie',"src/until",'nprogress'],function($,template,cookie,until,nprogress){
+		//加载
+		nprogress.start();
 
-		// NProgress.done();
-
+		nprogress.done();
+		console.log(location.pathname);
+		until.setActive(location.pathname);
 		$('#courseToggle').on('click', function () {
 			$(this).next().slideToggle();
 		});
@@ -72,5 +74,11 @@
 			// $.removeCookie("pInfor",{path:"/"});
 			// $.removeCookie("PHPSESSID",{path:"/"}); 
 		})
-
+		//ajax全局加载动画
+		$(document).ajaxStart(function(){
+			$(".loadCover").show();
+		})
+		$(document).ajaxStop(function(){
+			$(".loadCover").hide();
+		})
 	})

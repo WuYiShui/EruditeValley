@@ -1,4 +1,4 @@
-define(['jquery'],function($){
+define(['jquery','datepicker','zhCN'],function($){
 	$("#teacherAddForm").on("submit",function(){
 		// alert(1);
 		var formData=$(this).serialize();
