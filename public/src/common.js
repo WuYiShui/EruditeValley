@@ -28,14 +28,26 @@
 
 		// console.log(document.cookie);
 		// cookie存在 和不存在login页面 添加模板
-		if($.cookie("pInfor")&&str.indexOf("/login")==-1){
-			// console.log(1);
-			var pInfor=JSON.parse($.cookie("pInfor"));
-			// console.log(pInfor);
-			var html=template("asideTemp",pInfor);
-			// console.log(html);
-			$(".aside .profile").html(html);		
-		}
+		// 解决template在其他页面的容错  方法1
+		 var pInfor=$.cookie("pInfor")&&JSON.parse($.cookie("pInfor"));
+         var str='<div class="avatar img-circle">';
+         str+='<img src="<%=tc_avatar %>">';
+         str+='</div>';
+    	 str+='<h4><%= tc_name %></h4>';
+    	 var render=template.compile(str);
+    	 //容错{};
+    	 var html=render(pInfor||{});
+    	 $(".aside .profile").html(html);
+
+    	// 解决template在其他页面的容错  方法1
+		// if($.cookie("pInfor")&&str.indexOf("/login")==-1){
+		// 	// console.log(1);
+		// 	var pInfor=JSON.parse($.cookie("pInfor"));
+		// 	// console.log(pInfor);
+		// 	var html=template("asideTemp",pInfor);
+		// 	// console.log(html);
+		// 	$(".aside .profile").html(html);		
+		// }
 		//退出清除cookie 调用接口让服务器删除cookie
 		//
 		$("#exit").on("click",function(){
