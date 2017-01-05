@@ -31,9 +31,9 @@
 		// 解决template在其他页面的容错  方法1
 		 var pInfor=$.cookie("pInfor")&&JSON.parse($.cookie("pInfor"));
          var str='<div class="avatar img-circle">';
-         str+='<img src="<%=tc_avatar %>">';
+         str+='<img src="{{ tc_avatar }}">';
          str+='</div>';
-    	 str+='<h4><%= tc_name %></h4>';
+    	 str+='<h4>{{ tc_name }}</h4>';
     	 var render=template.compile(str);
     	 //容错{};
     	 var html=render(pInfor||{});

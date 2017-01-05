@@ -4,7 +4,7 @@ require.config({
 		jquery:"assets/jquery/jquery.min",
 		bootstrap:"assets/bootstrap/js/bootstrap.min",
 		nprogress:"assets/nprogress/nprogress",
-		template:"assets/artTemplate/template-native",
+		template:"assets/artTemplate/template",
 		cookie:"assets/jquery-cookie/jquery.cookie"
 	},
 	shim:{
