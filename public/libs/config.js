@@ -3,6 +3,8 @@ require.config({
 	paths:{
 		jquery:"assets/jquery/jquery.min",
 		bootstrap:"assets/bootstrap/js/bootstrap.min",
+		validate:"assets/jquery-validate/jquery-validate",
+		form:"assets/jquery-form/jquery.form",
 		datepicker:"assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
 		zhCN:"assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
 		nprogress:"assets/nprogress/nprogress",
@@ -14,6 +16,9 @@ require.config({
 			deps:["jquery"]
 		},
 		zhCN:{
+			deps:["jquery"]
+		},
+		validate:{
 			deps:["jquery"]
 		}
 	}
