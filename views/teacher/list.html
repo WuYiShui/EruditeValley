@@ -130,16 +130,16 @@
                 <td>{{ $value.tc_name }}</td>
                 <td>{{ $value.tc_roster }}</td>
                 <td>{{ $value.tc_birthday }}</td>
-                {{ if $value.tc_gender==1}}
+                {{ if $value.tc_gender==0 }}
                     <td>男</td>
                 {{ else }}
                     <td>女</td>
                 {{ /if }}
                 <td>{{ $value.tc_join_date }}</td>
-                <td data-id="{{$value.tc_id}}" data-status="{{  $value.tc_status }}">
+                <td data-id="{{ $value.tc_id }}" data-status="{{  $value.tc_status }}">
                     <a href="javascript:;" class="btn btn-info btn-xs" id="lookTeachers">查 看</a>
-                    <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
-                    {{if  $value.tc_status==1}}
+                    <a href="/teacher/add?tc_id={{ $value.tc_id }}" class="btn btn-info btn-xs">编 辑</a>
+                    {{if  $value.tc_status==1 }}
                         <a href="javascript:;" class="btn btn-warning btn-xs handle">启 用</a>
                     {{else}}
                         <a href="javascript:;" class="btn btn-warning btn-xs handle">注 销</a>
