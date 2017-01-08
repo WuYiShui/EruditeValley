@@ -5,6 +5,7 @@ require.config({
 		bootstrap:"assets/bootstrap/js/bootstrap.min",
 		validate:"assets/jquery-validate/jquery-validate",
 		form:"assets/jquery-form/jquery.form",
+		uploadify:"assets/uploadify/jquery.uploadify.min",
 		ckeditor:"assets/ckeditor/ckeditor",
 		region:"assets/jquery-region/jquery.region",
 		datepicker:"assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
@@ -18,13 +19,16 @@ require.config({
 			deps:["jquery"]
 		},
 		zhCN:{
-			deps:["jquery"]
+			deps:["jquery","datepicker"]
 		},
 		validate:{
-			deps:["jquery"]
+			deps:["jquery",]
 		},
 		ckeditor:{
 			exports:"CKEDITOR"
+		},
+		uploadify:{
+			deps:['jquery']
 		}
 	}
 })

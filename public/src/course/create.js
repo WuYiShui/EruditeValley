@@ -1,0 +1,34 @@
+define(['jquery','validate','form'],function($){
+	$("#createForm").validate({
+		onBlur:true,
+		sendForm:false,
+		valid:function(){
+			$(this).ajaxSubmit({
+				url:"/api/course/create",
+				type:"post",
+				success:function(createFor){
+					// console.log(createFor);
+					if(createFor.code==200){
+						location.href="/course/step1?cs_id="+createFor.result.cs_id
+					} 
+				}
+			})
+		},
+		eachInvalidField:function(){
+			$(this).parents(".form-group")
+			.removeClass("has-success")
+			.addClass('has-error');
+		},
+		eachValidField:function(){
+			$(this).parents(".form-group")
+			.removeClass("has-error")
+			.addClass('has-success');
+		},		
+		description:{
+			showCreate:{
+				required:"不能为空",
+				pattern:"格式错误"
+			}
+		}
+	})
+})
