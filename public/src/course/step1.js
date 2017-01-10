@@ -26,7 +26,7 @@ define(['jquery','template',"src/until",'ckeditor','validate','form'],function($
 						success:function(data){
 							if(data.code==200){
 								console.log(data);
-								// location.href="/course/step2?cs_id="+data.result.cs_id;
+								location.href="/course/step2?cs_id="+data.result.cs_id;
 							}	
 						}
 					})

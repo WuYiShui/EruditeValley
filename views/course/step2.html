@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
     <?php include('./views/common/style.html') ?>
+    <link rel="stylesheet" href="/public/assets/Jcrop/css/Jcrop.min.css">
 </head>
 <body>
     
@@ -20,65 +21,88 @@
                     <li><a href="javascript:;">课程管理</a></li>
                     <li class="active">课程添加</li>
                 </ol>
-                <div class="steps">
-                    <!-- 摘要 -->
-                    <div class="brief">
-                        <div class="thumb">
-                            <img src="/uploads/course_1.jpg" alt="">
-                        </div>
-                        <dl class="info">
-                            <dt>Git 指南</dt>
-                            <dd>讲师：李鹏周</dd>
-                            <dd>课时：32</dd>
-                        </dl>
-                    </div>
-                    <!-- 步聚 -->
-                    <ul class="forwards list-unstyled">
-                        <li>
-                            <a href="/index.php/course/step1" class="done">
-                            <b class="fa fa-check"></b>
-                            基本信息
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/index.php/course/step2" class="active">
-                            <b>2</b>
-                            课程图片
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/index.php/course/step3">
-                            <b>3</b>
-                            课时管理
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- 课程图片 -->
-                    <div class="content">
-                        <!-- 标题 -->
-                        <div class="title">
-                            <h5>课程图片 <small>COURSE PICTURE</small></h5>
-                        </div>
-                        <!-- 上传图片 -->
-                        <div class="picture col-md-offset-2">
-                            <div class="preview">
-                                <img src="/uploads/course.png" alt="">
-                            </div>
-                            <p class="tips">
-                                可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
-                            </p>
-                            <div class="col-md-2">
-                                <a href="./course_add_step3.html" class="btn btn-success btn-sm">选择图片</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a href="javascript:;" class="btn btn-warning btn-sm" disabled>裁切图片</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="steps" id="step2">
+                    <!-- 模板添加区域 -->
                 </div>
             </div>
         </div>
     </div>
     <?php include('./views/common/script.html') ?>
+    <script>
+    require(["src/course/step2"])
+    </script>
+    <script type="text/template" id="step2Temp">
+       <!-- 摘要 -->
+        <div class="brief">
+            <div class="thumb">
+            {{ if cs_cover}}
+               <img src="{{ cs_cover }}" alt="">
+            {{ /if }}
+            </div>
+            <dl class="info">
+                <dt>{{ cs_name }}</dt>
+                <dd>讲师:{{ tc_name }}</dd>
+            </dl>
+        </div>
+        <!-- 步聚 -->
+        <ul class="forwards list-unstyled">
+            <li>
+                <a href="/course/step1?cs_id={{ cs_id }}" class="done">
+                <b class="fa fa-check"></b>
+                基本信息
+                </a>
+            </li>
+            <li>
+                <a href="/course/step2?cs_id={{ cs_id }}" class="active">
+                <b>2</b>
+                课程图片
+                </a>
+            </li>
+            <li>
+                <a href="/course/step3?cs_id={{ cs_id }}">
+                <b>3</b>
+                课时管理
+                </a>
+            </li>
+        </ul>
+        <!-- 课程图片 -->
+        <div class="content">
+            <!-- 标题 -->
+            <div class="title">
+                <h5>课程图片 <small>COURSE PICTURE</small></h5>
+            </div>
+            <!-- 上传图片 -->
+            <div class="picture col-md-offset-2">
+                <div class="preview">
+                {{if cs_cover_original}}
+                    <img src="{{ cs_cover_original }}" >
+                {{else}}
+                    <img src="/uploads/course.png" >
+                {{ /if }}
+                </div>
+                <p class="tips">
+                    可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
+                </p>
+                <div class="col-md-2" style="overflow:hidden">
+                    <input type="file" id="upFile">
+                </div>
+                <div class="col-md-2">
+               
+                {{ if cs_cover_original }}
+                    <a href="javascript:;" class="btn btn-warning btn-sm" id="save">裁切图片</a>
+                {{else}}
+                    <a href="javascript:;" class="btn btn-warning btn-sm" id="save" disabled>裁切图片</a>
+                {{/if}}
+                    
+                    <form id="coords" class="hide">
+                        <input type="text" name="x" id="x">
+                        <input type="text" name="y" id="y">
+                        <input type="text" name="w" id="w">
+                        <input type="text" name="h" id="h">
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </script>
 </body>
 </html>
