@@ -1,6 +1,9 @@
 <?php
 // var_dump($_SERVER);
 
+
+
+//在我的分支上工作
 // $_SERVER 数组 可以获得服务器信息
 // 其中PATH_INFO是地址部分信息
 
